@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/tool
 import axios from 'axios';
 import type { Movie, NewMovie } from '../../types';
 
-const API_URL = 'http://localhost:5000/movies';
+const API_URL = import.meta.env.PROD ? '/movies' : 'http://localhost:5000/movies';
 
 interface MoviesState {
   items: Movie[];
