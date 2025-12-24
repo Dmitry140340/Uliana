@@ -129,3 +129,13 @@ app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
+
+initializeDb().then(() => {
+  app.listen(PORT, () => {
+    console.log('SQLite Server running on port ' + PORT);
+  });
+}).catch((err) => {
+  console.error('Failed to start server:', err);
+  process.exit(1);
+});
+
