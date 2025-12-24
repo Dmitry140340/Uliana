@@ -124,7 +124,8 @@ app.delete('/movies/:id', async (req, res) => {
 });
 
 // Handle React routing, return all requests to React app
-app.get('*', (req, res) => {
+// In Express 5, '*' is no longer a wildcard. We must use '(.*)' or a regex.
+app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
